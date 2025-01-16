@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>secretko</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* General styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4; /* Soft, neutral background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #333;
+            height: 100vh; /* Full viewport height */
+            justify-content: space-between; /* Ensures footer stays at the bottom */
+        }
+
+        /* Fixed Navigation Bar */
+        .navbar {
+            width: 100%;
+            background: linear-gradient(90deg, #4b4b4b, #7a7a7a); /* Darker neutral gradient */
+            padding: 12px 20px;
+            font-size: 14px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25); /* Subtle shadow */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0; /* Reset margins */
+        }
+
+        .navbar .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .navbar .title {
+            font-size: 14px;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .nav-links a {
+            color: #dddddd; /* Light gray text */
+            text-decoration: none;
+            margin: 0 8px;
+            padding: 8px 12px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .navbar .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+
+        /* Main content styling */
+        .content {
+            text-align: center;
+            margin-top: 100px;
+            padding: 20px;
+            max-width: 800px;
+            margin-right: 15px;
+            flex-grow: 1;
+            transition: opacity 1s ease; /* Fade-in effect */
+        }
+
+        .content h1 {
+            color: #ff6a88;
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .content p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .content audio {
+            margin-top: 20px;
+            border-radius: 10px;
+            padding: 5px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: none;
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background: #333333;
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            color: white;
+            font-size: 13px;
+            position: relative;
+        }
+
+        /* Web background effect */
+        .web-background {
+            background: url('https://upload.wikimedia.org/wikipedia/commons/e/e7/Spider-Man_logo.svg') no-repeat center center fixed;
+            background-size: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 5px;
+            }
+
+            .content h1 {
+                font-size: 24px;
+            }
+
+            .content p {
+                font-size: 14px;
+            }
+        }
+
+        /* Notice message styling */
+        .notice {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            font-size: 16px;
+            text-align: center;
+        }
+
+        /* Textbox styling */
+        .textbox-container {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .textbox-container textarea {
+            width: 90%;
+            height: 150px;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        /* Button styling */
+        .submit-button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #ff6a88;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #ff4788;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="title">
+            Secret Files ni Rayn
+        </div>
+        <div class="nav-links">
+            <a href="#" onclick="showNotice(); showPopup()">Home</a>
+            <a href="#" onclick="showNotice(); showPopup()">Messages</a>
+            <a href="#" onclick="showNotice(); showPopup()">About</a>
+            <a href="#" onclick="showNotice(); showPopup()">Gallery</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Hey, I've left you a space to write anything you want to say :></h1>
+        
+        <audio id="audioPlayer" controls autoplay>
+            <source src="C:\Users\Bravo\Desktop\he\New_Recording_3.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <!-- Textbox for Meron -->
+    <div class="textbox-container">
+        <p>you can share whatever's on your mind here and dw, i won’t be able to see your message here.</p>
+        <p>i created this for you so you’d have a space to share your thoughts freely.</p>
+        <p>i completely understand if you don’t want to tell me anything, though. but
+             if you want me to know, just dm me sa ig or dc hehehe </p>
+        <textarea id="message" placeholder="Write your message here..."></textarea>
+        <button class="submit-button" onclick="showMessage()">Click me to say goodbye</button>
+    </div>
+
+    <!-- Display submitted message -->
+    <div id="messageDisplay" style="text-align:center; margin-top:20px; color:#333;">
+        <!-- This is where the message will be displayed -->
+    </div>
+
+    <!-- Web background effect -->
+    <div class="web-background"></div>
+
+    <!-- Footer -->
+    <footer>
+        You've entered Rayn's private world. You must be special.
+    </footer>
+
+    <!-- Notice -->
+    <div class="notice" id="notice">
+        bawal po. 😊
+    </div>
+
+    <script>
+        const audioPlayer = document.getElementById('audioPlayer');
+        const messages = [
+            "C:\\Users\\Bravo\\Desktop\\he\\New_Recording_3.mp3", 
+            "C:\\Users\\Bravo\\Desktop\\he\\New_Recording_2.mp3", 
+            "C:\\Users\\Bravo\\Desktop\\he\\New_Recording_10.mp3"
+        ];
+        let currentMessageIndex = 0;
+
+        audioPlayer.addEventListener('ended', function() {
+            currentMessageIndex++;
+            if (currentMessageIndex < messages.length) {
+                audioPlayer.src = messages[currentMessageIndex];
+                audioPlayer.play();
+            }
+        });
+
+        // Function to show the notice message
+        function showNotice() {
+            const notice = document.getElementById('notice');
+            notice.style.display = 'block';  // Show the notice
+            setTimeout(() => {
+                notice.style.display = 'none';  // Hide the notice after 3 seconds
+            }, 3000);
+        }
+
+
+        // Function to display the message from the textbox
+        function showMessage() {
+            const message = document.getElementById('message').value; // Get the text from the textarea
+            const displayDiv = document.getElementById('messageDisplay');
+            displayDiv.innerHTML = `<p><strong>Your Message:</strong><br>${message}</p>`;
+            
+        }
+        
+    </script>
+
+</body>
+</html>
